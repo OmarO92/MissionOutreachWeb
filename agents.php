@@ -75,7 +75,7 @@ if(isset($_SESSION['active'])) {
   $link = mysqli_connect('localhost', 'guest', 'Scheema342', 'hackathon');
   
   
-  $agent_sql = 'SELECT fname, lname FROM `agent`';
+  $agent_sql = 'SELECT fname, lname, lat, lng FROM `agent`';
   $agent_parse = mysqli_query($link, $agent_sql);
   //$agent = oci_fetch_array($agent_parse,OCI_BOTH);
   
@@ -99,11 +99,12 @@ if(isset($_SESSION['active'])) {
       <tbody>';
         while ($agent = mysqli_fetch_assoc($agent_parse)) {
             $tagentC++;
-            echo '<tr>
-                <td class = "clickable-row" data-href="https://google.com/">'. $agent['fname'] .'</td>
-                <td>'. $agent['lname'] .'</td>
+            echo "<tr>
+                <td>". $agent['fname'] ."</td>
+                <td>". $agent['lname'] ."</td>
+                <td><button onclick='location(".$agent['lat'].", ".$agent['lng'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalLong'>View Location</button>
                 </tr>
-                ';
+                ";
         }
         echo'
       </tbody>
@@ -118,3 +119,48 @@ if(isset($_SESSION['active'])) {
 	exit();
 }
 ?>
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Client location</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="map"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    var myLatLng;
+
+    function location(lat, lng){
+        myLatLng = {lat: this.lat, lng: this.lng};
+    }
+
+    function initMap() {
+      myLatLng = {lat: 0, lng: 0};
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: myLatLng
+      });
+
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Client Location'
+      });
+    
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap"
+  async defer></script>
