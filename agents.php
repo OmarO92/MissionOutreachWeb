@@ -152,16 +152,14 @@ if(isset($_SESSION['active'])) {
     function initMap(plat, plng) {
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
-        center: {lat: plat, lng: plng}
+        center: {lat: (plat != null ) ? plat : 0, lng: (plng != null) ? plng : 0}
       });
-    console.log("Long: " + plat + "lat: " + plng + "on init map");
       
       var marker = new google.maps.Marker({
-        position: {lat: plat, lng: plng},
+        position: {lat: (plat != null ) ? plat : 0, lng: (plng != null) ? plng : 0},
         map: map,
         title: 'Client Location'
       });
-        console.log("lat: " + plat + " lng: " + plng + "second ");
     }
   </script>
   <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap"
