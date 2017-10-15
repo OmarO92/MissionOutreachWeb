@@ -153,6 +153,7 @@ if(isset($_SESSION['active'])) {
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
         center: {lat: plat, lng: plng}
+        console.log("lat: " + plat + " lng: " + plng);
       });
 
       var marker = new google.maps.Marker({
@@ -160,8 +161,8 @@ if(isset($_SESSION['active'])) {
         map: map,
         title: 'Client Location'
       });
-    console.log("Long: " + plat + "lat: " + plng + "on init map");
+        console.log("lat: " + plat + " lng: " + plng + "second ");
     }
   </script>
-  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap()"
+  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap"
   async defer></script>
