@@ -18,7 +18,12 @@
   <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
   <link href="style.css" rel = "stylesheet" text="text/css"/>
-
+  <style>
+      #map {
+        height: 300px;
+        width: 100%;
+      }
+  </style>
 </head>
 <body>
 <script>
@@ -140,15 +145,13 @@ if(isset($_SESSION['active'])) {
 </div>
 
 <script>
-    var myLatLng;
+    var myLatLng = {lat: 0, lng: 0};
 
     function setLocation(lat, lng){
         myLatLng = {lat: this.lat, lng: this.lng};
     }
 
     function initMap() {
-      myLatLng = {lat: 0, lng: 0};
-
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
         center: myLatLng
@@ -162,5 +165,5 @@ if(isset($_SESSION['active'])) {
     
     }
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap"
+  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap"
   async defer></script>
