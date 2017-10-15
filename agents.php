@@ -149,13 +149,14 @@ if(isset($_SESSION['active'])) {
     var uluru = {lat: 0, lng: 0};
 
     function updateLoc( plat, plng){
-      uluru = {lat: plat, lng: plng}
+	    uluru = {lat: parseFloat(plat), lng: parseFloat(plng)};
+		    initMap();
     }
 
     function initMap() {
         
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
+          zoom: 15,
           center: uluru
         });
         var marker = new google.maps.Marker({

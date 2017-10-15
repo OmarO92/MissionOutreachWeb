@@ -42,13 +42,14 @@ $(document).ready(function() {
       				<span class='icon-bar'></span>
       				<span class='icon-bar'></span>
       			</button>
-      			<a class='navbar-brand' href='#'>The Mission Outreach</a>
+      			<a class='navbar-brand' href='#'>Mission Outreach</a>
       		</div>
 
       		<div class='collapse navbar-collapse' id='myNavbar'>
       			<!---->
       			<ul class='nav navbar-nav'>
-      				<li><a href='home.php'>Home</a></li>
+				<li><a href='home.php'>Clients</a></li>
+				<li><a href='agents.php'>Agents</a></li>
       				<li><a href='add.php'>Add form</a></li>
       			</ul>
       			<!---->
