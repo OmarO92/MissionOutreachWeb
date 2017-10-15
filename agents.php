@@ -108,7 +108,7 @@ if(isset($_SESSION['active'])) {
             echo "<tr>
                 <td>". $agent['fname'] ."</td>
                 <td>". $agent['lname'] ."</td>
-                <td><button onClick='setLocation(".$agent['lat'].", ".$agent['lng'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalLong'>View Location</button>
+                <td><button onClick='initMap(".$agent['lat'].", ".$agent['lng'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalLong'>View Location</button>
                 </tr>
                 ";
         }
@@ -146,30 +146,22 @@ if(isset($_SESSION['active'])) {
     </div>
   </div>
 </div>
-<div id="LNG" value="" style="display:none;"></div>
-<div id="LAT" value="" style="display:none;"></div>
 
 <script>
 
-    function setLocation(lat, lng){
-        $("#LNG").val() = lng;
-        $("#LAT").val() = lat;
-        console.log("Long: " + $("#LNG").val() + "lat: " + $("#LAT").val());
-    }
-
-    function initMap() {
+    function initMap(plat, plng) {
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
-        center: {lat: parseFloat($("#LAT").val()), lng: parseFloat($("#LNG").val())}
+        center: {lat: plat, lng: plng}
       });
 
       var marker = new google.maps.Marker({
-        position: {lat: parseFloat($("#LAT").val()), lng: parseFloat($("#LNG").val())},
+        position: {lat: plat, lng: plng},
         map: map,
         title: 'Client Location'
       });
-    console.log("Long: " + $("#LNG").val() + "lat: " + $("#LAT").val() + "on init map");
+    console.log("Long: " + plat + "lat: " + plng + "on init map");
     }
   </script>
-  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap"
+  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap()"
   async defer></script>
