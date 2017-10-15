@@ -160,6 +160,7 @@ if(isset($_SESSION['active'])) {
         map: map,
         title: 'Client Location'
       });
+      google.maps.event.trigger(map, 'resize');
     }
   </script>
   <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap"
