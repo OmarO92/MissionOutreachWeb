@@ -137,8 +137,6 @@ if(isset($_SESSION['active'])) {
       </div>
       <div class="modal-body">
         <div id="map"></div>
-        <div style="display:none;" id="Lat" value=""></div>
-        <div style="display:none;" id="Lng" value=""></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -146,22 +144,22 @@ if(isset($_SESSION['active'])) {
     </div>
   </div>
 </div>
-      <script>
-      function initMap(plat, plng) {
-        var mapOptions = {
-          zoom: 8,
-          center: new google.maps.LatLng(plat, plng)
-        };
-        var map = new google.maps.Map($("#map-canvas")[0], mapOptions);
 
-        // listen for the window resize event & trigger Google Maps to update too
-        $(window).resize(function() {
-          // (the 'map' here is the result of the created 'var map = ...' above)
-          google.maps.event.trigger(map, "resize");
-        });
-      };
+<script>
+
+    function initMap(plat, plng) {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: {lat: (plat != null ) ? plat : 0, lng: (plng != null) ? plng : 0}
+      });
       
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap">
-    </script>
+      var marker = new google.maps.Marker({
+        position: {lat: (plat != null ) ? plat : 0, lng: (plng != null) ? plng : 0},
+        map: map,
+        title: 'Client Location'
+      });
+    }
+  </script>
+  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap"
+  async defer></script>
+  
