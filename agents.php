@@ -154,13 +154,13 @@ if(isset($_SESSION['active'])) {
         zoom: 15,
         center: {lat: (plat != null ) ? plat : 0, lng: (plng != null) ? plng : 0}
       });
+      google.maps.event.trigger(map, 'resize');
       
       var marker = new google.maps.Marker({
         position: {lat: (plat != null ) ? plat : 0, lng: (plng != null) ? plng : 0},
         map: map,
         title: 'Client Location'
       });
-      google.maps.event.trigger(map, 'resize');
     }
   </script>
   <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap"
