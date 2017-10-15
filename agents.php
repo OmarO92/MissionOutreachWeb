@@ -108,7 +108,7 @@ if(isset($_SESSION['active'])) {
             echo "<tr>
                 <td>". $agent['fname'] ."</td>
                 <td>". $agent['lname'] ."</td>
-                <td><button onClick='initMap(".$agent['lat'].", ".$agent['lng'].")' class='btn btn-success' data-toggle='modal' data-target='#exampleModalLong'>View Location</button>
+                <td><button onClick='updateLoc(".$agent['lat'].", ".$agent['lng'].")' class='btn btn-success' data-toggle='modal' data-target='#exampleModalLong'>View Location</button>
                 </tr>
                 ";
         }
@@ -146,20 +146,24 @@ if(isset($_SESSION['active'])) {
 </div>
 
 <script>
+    var uluru = {lat: 0, lng: 0};
 
-    function initMap(plat, plng) {
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
-        center: {lat: (plat != null ) ? plat : 0, lng: (plng != null) ? plng : 0}
-      });
-      
-      var marker = new google.maps.Marker({
-        position: {lat: (plat != null ) ? plat : 0, lng: (plng != null) ? plng : 0},
-        map: map,
-        title: 'Client Location'
-      });
+    function updateLoc( plat, plng){
+      uluru = {lat: plat, lng: plng}
     }
+
+    function initMap() {
+        
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
   </script>
-  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap"
+  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0"
   async defer></script>
   
