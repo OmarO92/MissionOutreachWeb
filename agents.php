@@ -147,17 +147,20 @@ if(isset($_SESSION['active'])) {
   </div>
 </div>
       <script>
-      function initMap() {
-        var uluru = {lat:  0 , lng: 0};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
+      function initMap(plat, plng) {
+        var mapOptions = {
+          zoom: 8,
+          center: new google.maps.LatLng(plat, plng)
+        };
+        var map = new google.maps.Map($("#map-canvas")[0], mapOptions);
+
+        // listen for the window resize event & trigger Google Maps to update too
+        $(window).resize(function() {
+          // (the 'map' here is the result of the created 'var map = ...' above)
+          google.maps.event.trigger(map, "resize");
         });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
+      };
+      
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap">
