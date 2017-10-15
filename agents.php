@@ -160,11 +160,11 @@ if(isset($_SESSION['active'])) {
     function initMap() {
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
-        center: {lat: $("#LAT").val(), lng: $("#LNG").val()}
+        center: {lat: parseFloat($("#LAT").val()), lng: parseFloat($("#LNG").val())}
       });
 
       var marker = new google.maps.Marker({
-        position: myLatLng,
+        position: {lat: parseFloat($("#LAT").val()), lng: parseFloat($("#LNG").val())},
         map: map,
         title: 'Client Location'
       });
