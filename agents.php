@@ -108,7 +108,7 @@ if(isset($_SESSION['active'])) {
             echo "<tr>
                 <td>". $agent['fname'] ."</td>
                 <td>". $agent['lname'] ."</td>
-                <td><button onClick='initMap(".$agent['lat'].", ".$agent['lng'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalLong'>View Location</button>
+                <td><button onClick='initMap(".$agent['lat'].", ".$agent['lng'].")' class='btn btn-success' data-toggle='modal' data-target='#exampleModalLong'>View Location</button>
                 </tr>
                 ";
         }
@@ -153,9 +153,9 @@ if(isset($_SESSION['active'])) {
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
         center: {lat: plat, lng: plng}
-        console.log("lat: " + plat + " lng: " + plng);
       });
-
+    console.log("Long: " + plat + "lat: " + plng + "on init map");
+      
       var marker = new google.maps.Marker({
         position: {lat: plat, lng: plng},
         map: map,
