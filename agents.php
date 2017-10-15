@@ -145,18 +145,21 @@ if(isset($_SESSION['active'])) {
     </div>
   </div>
 </div>
+<div id="LNG" value="" style="display:none;"></div>
+<div id="LAT" value="" style="display:none;"></div>
 
 <script>
-    var myLatLng = {lat: 0, lng: 0};
 
     function setLocation(lat, lng){
-        myLatLng = {lat: lat, lng: lng};
+        $("#LNG").value = lng;
+        $("#LAT").value = lat;
+        initMap();
     }
 
     function initMap() {
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
-        center: myLatLng
+        center: {lat: $("#LAT").value, lng: $("#LNG").value}
       });
 
       var marker = new google.maps.Marker({
@@ -167,5 +170,5 @@ if(isset($_SESSION['active'])) {
     
     }
   </script>
-  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0"
+  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap"
   async defer></script>
