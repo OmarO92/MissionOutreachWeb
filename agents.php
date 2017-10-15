@@ -146,22 +146,19 @@ if(isset($_SESSION['active'])) {
     </div>
   </div>
 </div>
-
-<script>
-
-    function initMap(plat, plng) {
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
-        center: {lat: (plat != null ) ? plat : 0, lng: (plng != null) ? plng : 0}
-      });
-      google.maps.event.trigger(map, 'resize');
-      
-      var marker = new google.maps.Marker({
-        position: {lat: (plat != null ) ? plat : 0, lng: (plng != null) ? plng : 0},
-        map: map,
-        title: 'Client Location'
-      });
-    }
-  </script>
-  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap"
-  async defer></script>
+      <script>
+      function initMap(plat, plng) {
+        var uluru = {lat: plat != null ) ? plat : 0 , lng: (plng != null) ? plng : 0};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=IzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap">
+    </script>
