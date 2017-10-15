@@ -102,7 +102,7 @@ if(isset($_SESSION['active'])) {
             echo "<tr>
                 <td>". $agent['fname'] ."</td>
                 <td>". $agent['lname'] ."</td>
-                <td><button onclick='location(".$agent['lat'].", ".$agent['lng'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalLong'>View Location</button>
+                <td><button onClick='setLocation(".$agent['lat'].", ".$agent['lng'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalLong'>View Location</button>
                 </tr>
                 ";
         }
@@ -142,7 +142,7 @@ if(isset($_SESSION['active'])) {
 <script>
     var myLatLng;
 
-    function location(lat, lng){
+    function setLocation(lat, lng){
         myLatLng = {lat: this.lat, lng: this.lng};
     }
 
