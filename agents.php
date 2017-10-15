@@ -147,8 +147,8 @@ if(isset($_SESSION['active'])) {
   </div>
 </div>
       <script>
-      function initMap(plat, plng) {
-        var uluru = {lat: plat != null ) ? plat : 0 , lng: (plng != null) ? plng : 0};
+      function initMap() {
+        var uluru = {lat:  0 , lng: 0};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
           center: uluru
