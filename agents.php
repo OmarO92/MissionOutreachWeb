@@ -99,6 +99,7 @@ if(isset($_SESSION['active'])) {
         <tr>
           <th>First Name</th>
           <th>Last Name</th>
+          <th>Location</th>
         </tr>
       </thead>
       <tbody>';
@@ -153,7 +154,7 @@ if(isset($_SESSION['active'])) {
     function setLocation(lat, lng){
         $("#LNG").val() = lng;
         $("#LAT").val() = lat;
-        initMap();
+        console.log("Long: " + $("#LNG").val() + "lat: " + $("#LAT").val());
     }
 
     function initMap() {
@@ -167,7 +168,7 @@ if(isset($_SESSION['active'])) {
         map: map,
         title: 'Client Location'
       });
-    
+    console.log("Long: " + $("#LNG").val() + "lat: " + $("#LAT").val() + "on init map");
     }
   </script>
   <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap"
