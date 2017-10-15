@@ -1,6 +1,6 @@
 <?php
 
-  define("HOST", "http://hackathonserver.ddns.net/");    
+  define("HOST", "localhost");    
   define("USERNAME", "guest");   
   define("PASSWORD", "Scheema342");   
   define("DATABASE", "hackathon");  
