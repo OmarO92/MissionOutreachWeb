@@ -151,15 +151,15 @@ if(isset($_SESSION['active'])) {
 <script>
 
     function setLocation(lat, lng){
-        $("#LNG").value = lng;
-        $("#LAT").value = lat;
+        $("#LNG").val() = lng;
+        $("#LAT").val() = lat;
         initMap();
     }
 
     function initMap() {
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
-        center: {lat: $("#LAT").value, lng: $("#LNG").value}
+        center: {lat: $("#LAT").val(), lng: $("#LNG").val()}
       });
 
       var marker = new google.maps.Marker({
