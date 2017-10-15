@@ -89,3 +89,12 @@
 #footer a {
 	color: inherit;
 }
+.navbar-custom {
+	background-color: #1fa67b;
+}
+.navbar-default .navbar-nav>li>a {
+	color: #ffffff;
+}
+.navbar-default .navbar-brand {
+	color: #ffffff;
+}
