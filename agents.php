@@ -160,5 +160,5 @@ if(isset($_SESSION['active'])) {
       }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=IzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDVKkM51f4P-tbkqHVw3bbUkAnfITvfB0&callback=initMap">
     </script>
