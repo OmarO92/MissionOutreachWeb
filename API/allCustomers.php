@@ -7,9 +7,6 @@ require_once('connect.php');
           $row_array['fname'] = $row['fname'];
           $row_array['lname'] = $row['lname'];
           $row_array['dob']   = $row['dob'];
-          $row_array['lat']   = $row['lat'];
-          $row_array['lng']   = $row['lng'];
-          $row_array['id']    = $row['id'];
           $row_array['qr']    = $row['qr'];
           array_push($return_arr,$row_array);
       }
