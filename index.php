@@ -4,8 +4,8 @@ $link = mysqli_connect('localhost', 'guest', 'Scheema342', 'hackathon');
 if(isset($_POST['username'], $_POST['password']) && !empty($_POST['username']) && !empty($_POST['password'])){
 
 	// sanitize and query database 
-	$postedUsername = $_POST['username'];
-	$postedPassword = $_POST['password'];
+	$postedUsername = mysqli_real_escape_string($link,htmlentities($_POST['username']));
+	$postedPassword = mysqli_real_escape_string($link,htmlentities($_POST['password']));
 	$sql = "SELECT * from agent where fname = '". $postedUsername ."'";
 	$res = mysqli_query($link, $sql);
 	if (mysqli_num_rows($res) > 0) {
@@ -40,31 +40,35 @@ if(isset($_POST['username'], $_POST['password']) && !empty($_POST['username']) &
 		 <html>
 			 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 			 <link rel="stylesheet" href="style.css">
+			<body style="background-image: url(./wall.jpg); background-size: cover">
 			 <div>
 				 <section id="login">
-					 <div class="container">
-						 <div class="row">
-							 <div class="col-xs-12">
-								 <div class="form-wrap">
-									 <h1>Log in with your account</h1>
-									 <form role="form"  action="index.php" method="POST" id="login-form" autocomplete="off">
-										 <div class="form-group">
-											 <label for="username" class="sr-only">Username</label>
-											 <input type="username" name="username" id="username" class="form-control" placeholder="somebody">
-										 </div>
-										 <div class="form-group">
-											 <label for="password" class="sr-only">Password</label>
-											 <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-										 </div>
-										 <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Log in">
-									 </form>
-									 <hr>
-								 </div>
-							 </div> <!-- /.col-xs-12 -->
-						 </div> <!-- /.row -->
-					 </div> <!-- /.container -->
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-8 col-md-offset-2">
+				 					<div class="well">
+										<div class="form-wrap">
+											<h1>Log in with your account</h1>
+											<form role="form"  action="index.php" method="POST" id="login-form" autocomplete="off">
+												<div class="form-group">
+													<label for="username" class="sr-only">Username</label>
+													<input type="username" name="username" id="username" class="form-control" placeholder="somebody">
+												</div>
+												<div class="form-group">
+													<label for="password" class="sr-only">Password</label>
+													<input type="password" name="password" id="password" class="form-control" placeholder="Password">
+												</div>
+												<input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Log in">
+											</form>
+											<hr>
+										</div>
+				 					</div>
+								</div> <!-- /.col-xs-12 -->
+							</div> <!-- /.row -->
+						</div> <!-- /.container -->
 				 </section>
 			 </div>
+			</body>
 			 <!---
 	    <footer id="footer">
 	    <div class="container">
